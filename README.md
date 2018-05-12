@@ -21,15 +21,26 @@ When You access to Raspberry Pi WebSite, you can get your pet activitis. So, You
 ## Get the Picture of your pets
 This system is based on Deep Learning Argorithm for detect pet name. For the reason, you must first Traning the system to recognize your pets. It requires some pictures of your pets.
 
-## Trainging Nural network for your purpuse.
-If you have High Performance PC (if possible CUDA enabled), Training time is make to shoot. Detail instruction as bekkow,
+Initial picture must be stored images/trani/XXX Folders. And Total image must be devided by 10, 10 is batch size for this training phase.
 
+And another limitation, current version support only Four Categry folders. Please take care of.
+   
+## Step1 create dataset.
+First time, please run the make_train_data.py in images folders, this script generate training data set support files.
+
+## Trainging Nural network for your purpuse.
+Now start to train the Neural Network.
+It is simple to run the, python train.py. It takes few minuits depend of image count and CPU power.
+
+If you have High Performance PC (if possible CUDA enabled), Training time is make to shoot. Detail instruction as bekkow,
 if you do not have High Performance PC, Don't worrry, Raspberry PI Can To Traning but to Slow.
 
 ## Tranind Nural Network to move in to Raspberry PI system
-Traned Neural Network system is key item for this system, So, copy it data to Raspberry PI correct directory.
+After trainig was finished, Please send all of files in python folders, include ckpt.
 
-## Setup system parameter for your environment
+## Recogsize image command
+To recognize image command as follow.
+python predict.py imagefile
 
 # Setup PetActivityMonitorSystem
 Now, You can setup PetActivityMonitorSystem to you decided position. 
