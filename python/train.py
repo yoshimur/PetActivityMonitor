@@ -10,6 +10,7 @@ flags = tf.app.flags
 FLAGS = flags.FLAGS
 flags.DEFINE_string('train', os.path.join('images', 'train_data_file.txt'), 'File name of train data')
 flags.DEFINE_string('test', os.path.join('images', 'test_data_file.txt'), 'File name of test data')
+flags.DEFINE_string('label', os.path.join('images', 'label.txt'), 'File name of label data')
 flags.DEFINE_string('train_dir', 'images/train_data', 'Directory to put the training data')
 flags.DEFINE_integer('max_steps', 200, 'Number of steps to run trainer')
 flags.DEFINE_integer('batch_size', 10, 'Batch size, must divide evenly into the data set sizes')
@@ -34,7 +35,7 @@ if __name__ == '__main__':
         img = img.resize((nn.IMAGE_SIZE, nn.IMAGE_SIZE))
         train_image.append(np.asarray(img) / 255.0)
         tmp = np.zeros(nn.NUM_CLASSES)
-        tmp[l[1]] = 1.0
+        tmp[int(l[1])] = 1.0
         train_label.append(tmp)
 
     train_image = np.asarray(train_image)
@@ -52,7 +53,7 @@ if __name__ == '__main__':
         img = img.resize((nn.IMAGE_SIZE, nn.IMAGE_SIZE))
         test_image.append(np.asarray(img) / 255.0)
         tmp = np.zeros(nn.NUM_CLASSES)
-        tmp[l[1]] = 1.0
+        tmp[int(l[1])] = 1.0
         test_label.append(tmp)
 
     test_image = np.asarray(test_image)
